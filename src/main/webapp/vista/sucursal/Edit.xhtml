@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+
+    <ui:composition>
+
+        <p:dialog id="SucursalEditDlg" widgetVar="SucursalEditDialog" modal="true" resizable="false" appendTo="@(body)" header="#{vista.EditSucursalTitle}">
+            <h:form id="SucursalEditForm">
+                <h:panelGroup id="display">
+                    <p:panelGrid columns="2" rendered="#{sucursalController.selected != null}">
+                        <p:outputLabel value="#{vista.EditSucursalLabel_idsuc}" for="idsuc" />
+                        <p:inputText id="idsuc" value="#{sucursalController.selected.idsuc}" title="#{vista.EditSucursalTitle_idsuc}" required="true" requiredMessage="#{vista.EditSucursalRequiredMessage_idsuc}"/>
+                        <p:outputLabel value="#{vista.EditSucursalLabel_telsuc}" for="telsuc" />
+                        <p:inputText id="telsuc" value="#{sucursalController.selected.telsuc}" title="#{vista.EditSucursalTitle_telsuc}" required="true" requiredMessage="#{vista.EditSucursalRequiredMessage_telsuc}"/>
+                        <p:outputLabel value="#{vista.EditSucursalLabel_diresuc}" for="diresuc" />
+                        <p:inputText id="diresuc" value="#{sucursalController.selected.diresuc}" title="#{vista.EditSucursalTitle_diresuc}" required="true" requiredMessage="#{vista.EditSucursalRequiredMessage_diresuc}"/>
+                        <p:outputLabel value="#{vista.EditSucursalLabel_prosuc}" for="prosuc" />
+                        <p:inputText id="prosuc" value="#{sucursalController.selected.prosuc}" title="#{vista.EditSucursalTitle_prosuc}" required="true" requiredMessage="#{vista.EditSucursalRequiredMessage_prosuc}"/>
+                        <p:outputLabel value="#{vista.EditSucursalLabel_estsuc}" for="estsuc" />
+                        <p:inputText id="estsuc" value="#{sucursalController.selected.estsuc}" title="#{vista.EditSucursalTitle_estsuc}" required="true" requiredMessage="#{vista.EditSucursalRequiredMessage_estsuc}"/>
+                    </p:panelGrid>
+                    <p:commandButton actionListener="#{sucursalController.update}" value="#{vista.Save}" update="display,:SucursalListForm:datalist,:growl" oncomplete="handleSubmit(args, 'SucursalEditDialog');"/>
+                    <p:commandButton value="#{vista.Cancel}" onclick="SucursalEditDialog.hide()"/>
+                </h:panelGroup>
+            </h:form>
+        </p:dialog>
+
+    </ui:composition>
+</html>

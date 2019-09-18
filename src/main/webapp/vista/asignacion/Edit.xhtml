@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+
+    <ui:composition>
+
+        <p:dialog id="AsignacionEditDlg" widgetVar="AsignacionEditDialog" modal="true" resizable="false" appendTo="@(body)" header="#{vista.EditAsignacionTitle}">
+            <h:form id="AsignacionEditForm">
+                <h:panelGroup id="display">
+                    <p:panelGrid columns="2" rendered="#{asignacionController.selected != null}">
+                        <p:outputLabel value="#{vista.EditAsignacionLabel_idasi}" for="idasi" />
+                        <p:inputText id="idasi" value="#{asignacionController.selected.idasi}" title="#{vista.EditAsignacionTitle_idasi}" required="true" requiredMessage="#{vista.EditAsignacionRequiredMessage_idasi}"/>
+                        <p:outputLabel value="#{vista.EditAsignacionLabel_estasi}" for="estasi" />
+                        <p:inputText id="estasi" value="#{asignacionController.selected.estasi}" title="#{vista.EditAsignacionTitle_estasi}" required="true" requiredMessage="#{vista.EditAsignacionRequiredMessage_estasi}"/>
+                        <p:outputLabel value="#{vista.EditAsignacionLabel_gruasig}" for="gruasig" />
+                        <p:inputText id="gruasig" value="#{asignacionController.selected.gruasig}" title="#{vista.EditAsignacionTitle_gruasig}" required="true" requiredMessage="#{vista.EditAsignacionRequiredMessage_gruasig}"/>
+                        <p:outputLabel value="#{vista.EditAsignacionLabel_idper}" for="idper" />
+                        <p:selectOneMenu id="idper" value="#{asignacionController.selected.idper}" required="true" requiredMessage="#{vista.EditAsignacionRequiredMessage_idper}">
+                            <f:selectItem itemLabel="#{vista.SelectOneMessage}"/>
+                            <f:selectItems value="#{personaController.itemsAvailableSelectOne}"
+                                           var="idperItem"
+                                           itemValue="#{idperItem}"/>
+                        </p:selectOneMenu>
+                        <p:outputLabel value="#{vista.EditAsignacionLabel_idven}" for="idven" />
+                        <p:selectOneMenu id="idven" value="#{asignacionController.selected.idven}" required="true" requiredMessage="#{vista.EditAsignacionRequiredMessage_idven}">
+                            <f:selectItem itemLabel="#{vista.SelectOneMessage}"/>
+                            <f:selectItems value="#{personaController.itemsAvailableSelectOne}"
+                                           var="idvenItem"
+                                           itemValue="#{idvenItem}"/>
+                        </p:selectOneMenu>
+                        <p:outputLabel value="#{vista.EditAsignacionLabel_idsuc}" for="idsuc" />
+                        <p:selectOneMenu id="idsuc" value="#{asignacionController.selected.idsuc}" required="true" requiredMessage="#{vista.EditAsignacionRequiredMessage_idsuc}">
+                            <f:selectItem itemLabel="#{vista.SelectOneMessage}"/>
+                            <f:selectItems value="#{sucursalController.itemsAvailableSelectOne}"
+                                           var="idsucItem"
+                                           itemValue="#{idsucItem}"/>
+                        </p:selectOneMenu>
+                    </p:panelGrid>
+                    <p:commandButton actionListener="#{asignacionController.update}" value="#{vista.Save}" update="display,:AsignacionListForm:datalist,:growl" oncomplete="handleSubmit(args, 'AsignacionEditDialog');"/>
+                    <p:commandButton value="#{vista.Cancel}" onclick="AsignacionEditDialog.hide()"/>
+                </h:panelGroup>
+            </h:form>
+        </p:dialog>
+
+    </ui:composition>
+</html>

@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+
+    <ui:composition>
+
+        <p:dialog id="ProductoCreateDlg" widgetVar="ProductoCreateDialog" modal="true" resizable="false" appendTo="@(body)" header="#{vista.CreateProductoTitle}">
+            <h:form id="ProductoCreateForm">
+                <h:panelGroup id="display">
+                    <p:panelGrid columns="2" rendered="#{productoController.selected != null}">
+                        <p:outputLabel value="#{vista.CreateProductoLabel_idpro}" for="idpro" />
+                        <p:inputText id="idpro" value="#{productoController.selected.idpro}" title="#{vista.CreateProductoTitle_idpro}" required="true" requiredMessage="#{vista.CreateProductoRequiredMessage_idpro}"/>
+                        <p:outputLabel value="#{vista.CreateProductoLabel_nompro}" for="nompro" />
+                        <p:inputText id="nompro" value="#{productoController.selected.nompro}" title="#{vista.CreateProductoTitle_nompro}" required="true" requiredMessage="#{vista.CreateProductoRequiredMessage_nompro}"/>
+                        <p:outputLabel value="#{vista.CreateProductoLabel_prepro}" for="prepro" />
+                        <p:inputText id="prepro" value="#{productoController.selected.prepro}" title="#{vista.CreateProductoTitle_prepro}" required="true" requiredMessage="#{vista.CreateProductoRequiredMessage_prepro}"/>
+                        <p:outputLabel value="#{vista.CreateProductoLabel_catpro}" for="catpro" />
+                        <p:inputText id="catpro" value="#{productoController.selected.catpro}" title="#{vista.CreateProductoTitle_catpro}" required="true" requiredMessage="#{vista.CreateProductoRequiredMessage_catpro}"/>
+                        <p:outputLabel value="#{vista.CreateProductoLabel_estpro}" for="estpro" />
+                        <p:inputText id="estpro" value="#{productoController.selected.estpro}" title="#{vista.CreateProductoTitle_estpro}" required="true" requiredMessage="#{vista.CreateProductoRequiredMessage_estpro}"/>
+                        <p:outputLabel value="#{vista.CreateProductoLabel_cantpro}" for="cantpro" />
+                        <p:inputText id="cantpro" value="#{productoController.selected.cantpro}" title="#{vista.CreateProductoTitle_cantpro}" required="true" requiredMessage="#{vista.CreateProductoRequiredMessage_cantpro}"/>
+                        <p:outputLabel value="#{vista.CreateProductoLabel_fechingpro}" for="fechingpro" />
+                        <p:calendar id="fechingpro" pattern="MM/dd/yyyy HH:mm:ss" value="#{productoController.selected.fechingpro}" title="#{vista.EditProductoTitle_fechingpro}" required="true" requiredMessage="#{vista.EditProductoRequiredMessage_fechingpro}" showOn="button"/>
+                    </p:panelGrid>
+                    <p:commandButton actionListener="#{productoController.create}" value="#{vista.Save}" update="display,:ProductoListForm:datalist,:growl" oncomplete="handleSubmit(args,'ProductoCreateDialog');"/>
+                    <p:commandButton value="#{vista.Cancel}" onclick="ProductoCreateDialog.hide()"/>
+                </h:panelGroup>
+            </h:form>
+        </p:dialog>
+
+    </ui:composition>
+</html>

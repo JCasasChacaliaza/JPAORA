@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+
+    <ui:composition>
+
+        <p:dialog id="PersonaEditDlg" widgetVar="PersonaEditDialog" modal="true" resizable="false" appendTo="@(body)" header="#{vista.EditPersonaTitle}">
+            <h:form id="PersonaEditForm">
+                <h:panelGroup id="display">
+                    <p:panelGrid columns="2" rendered="#{personaController.selected != null}">
+                        
+                        <p:outputLabel value="#{vista.EditPersonaLabel_nomper}" for="nomper" />
+                        <p:inputText id="nomper" value="#{personaController.selected.nomper}" title="#{vista.EditPersonaTitle_nomper}" required="true" requiredMessage="#{vista.EditPersonaRequiredMessage_nomper}"/>
+                        <p:outputLabel value="#{vista.EditPersonaLabel_apeper}" for="apeper" />
+                        <p:inputText id="apeper" value="#{personaController.selected.apeper}" title="#{vista.EditPersonaTitle_apeper}" required="true" requiredMessage="#{vista.EditPersonaRequiredMessage_apeper}"/>
+                        <p:outputLabel value="#{vista.EditPersonaLabel_dniper}" for="dniper" />
+                        <p:inputText id="dniper" value="#{personaController.selected.dniper}" title="#{vista.EditPersonaTitle_dniper}" required="true" requiredMessage="#{vista.EditPersonaRequiredMessage_dniper}"/>
+                        <p:outputLabel value="#{vista.EditPersonaLabel_sexper}" for="sexper" />
+                        <p:inputText id="sexper" value="#{personaController.selected.sexper}" title="#{vista.EditPersonaTitle_sexper}" required="true" requiredMessage="#{vista.EditPersonaRequiredMessage_sexper}"/>
+                        <p:outputLabel value="#{vista.EditPersonaLabel_celper}" for="celper" />
+                        <p:inputText id="celper" value="#{personaController.selected.celper}" title="#{vista.EditPersonaTitle_celper}" required="true" requiredMessage="#{vista.EditPersonaRequiredMessage_celper}"/>
+                        <p:outputLabel value="#{vista.EditPersonaLabel_tipper}" for="tipper" />
+                        <p:inputText id="tipper" value="#{personaController.selected.tipper}" title="#{vista.EditPersonaTitle_tipper}" required="true" requiredMessage="#{vista.EditPersonaRequiredMessage_tipper}"/>
+                        <p:outputLabel value="#{vista.EditPersonaLabel_usuper}" for="usuper" />
+                        <p:inputText id="usuper" value="#{personaController.selected.usuper}" title="#{vista.EditPersonaTitle_usuper}" required="true" requiredMessage="#{vista.EditPersonaRequiredMessage_usuper}"/>
+                        <p:outputLabel value="#{vista.EditPersonaLabel_passper}" for="passper" />
+                        <p:inputText id="passper" value="#{personaController.selected.passper}" title="#{vista.EditPersonaTitle_passper}" required="true" requiredMessage="#{vista.EditPersonaRequiredMessage_passper}"/>
+                        <p:outputLabel value="#{vista.EditPersonaLabel_estper}" for="estper" />
+                        <p:inputText id="estper" value="#{personaController.selected.estper}" title="#{vista.EditPersonaTitle_estper}" required="true" requiredMessage="#{vista.EditPersonaRequiredMessage_estper}"/>
+                    </p:panelGrid>
+                    <p:commandButton actionListener="#{personaController.update}" value="#{vista.Save}" update="display,:PersonaListForm:datalist,:growl" oncomplete="handleSubmit(args, 'PersonaEditDialog');"/>
+                    <p:commandButton value="#{vista.Cancel}" onclick="PersonaEditDialog.hide()"/>
+                </h:panelGroup>
+            </h:form>
+        </p:dialog>
+
+    </ui:composition>
+</html>

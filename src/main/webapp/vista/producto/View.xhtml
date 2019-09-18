@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+
+    <ui:composition>
+
+        <p:dialog id="ProductoViewDlg" widgetVar="ProductoViewDialog" modal="true" resizable="false" appendTo="@(body)" header="#{vista.ViewProductoTitle}">
+            <h:form id="ProductoViewForm">
+                <h:panelGroup id="display">
+                    <p:panelGrid columns="2" rendered="#{productoController.selected != null}">
+                        <h:outputText value="#{vista.ViewProductoLabel_idpro}"/>
+                        <h:outputText value="#{productoController.selected.idpro}" title="#{vista.ViewProductoTitle_idpro}"/>
+                        <h:outputText value="#{vista.ViewProductoLabel_nompro}"/>
+                        <h:outputText value="#{productoController.selected.nompro}" title="#{vista.ViewProductoTitle_nompro}"/>
+                        <h:outputText value="#{vista.ViewProductoLabel_prepro}"/>
+                        <h:outputText value="#{productoController.selected.prepro}" title="#{vista.ViewProductoTitle_prepro}"/>
+                        <h:outputText value="#{vista.ViewProductoLabel_catpro}"/>
+                        <h:outputText value="#{productoController.selected.catpro}" title="#{vista.ViewProductoTitle_catpro}"/>
+                        <h:outputText value="#{vista.ViewProductoLabel_estpro}"/>
+                        <h:outputText value="#{productoController.selected.estpro}" title="#{vista.ViewProductoTitle_estpro}"/>
+                        <h:outputText value="#{vista.ViewProductoLabel_cantpro}"/>
+                        <h:outputText value="#{productoController.selected.cantpro}" title="#{vista.ViewProductoTitle_cantpro}"/>
+                        <h:outputText value="#{vista.ViewProductoLabel_fechingpro}"/>
+                        <h:outputText value="#{productoController.selected.fechingpro}" title="#{vista.ViewProductoTitle_fechingpro}">
+                            <f:convertDateTime pattern="MM/dd/yyyy HH:mm:ss" />
+                        </h:outputText>
+                    </p:panelGrid>
+                    <p:commandButton value="#{vista.Close}" onclick="ProductoViewDialog.hide()"/>
+                </h:panelGroup>
+            </h:form>
+        </p:dialog>
+
+    </ui:composition>
+</html>

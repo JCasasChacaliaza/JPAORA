@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+
+    <ui:composition>
+
+        <p:dialog id="AsignacionCreateDlg" widgetVar="AsignacionCreateDialog" modal="true" resizable="false" appendTo="@(body)" header="#{vista.CreateAsignacionTitle}">
+            <h:form id="AsignacionCreateForm">
+                <h:panelGroup id="display">
+                    <p:panelGrid columns="2" rendered="#{asignacionController.selected != null}">
+                        <p:outputLabel value="#{vista.CreateAsignacionLabel_idasi}" for="idasi" />
+                        <p:inputText id="idasi" value="#{asignacionController.selected.idasi}" title="#{vista.CreateAsignacionTitle_idasi}" required="true" requiredMessage="#{vista.CreateAsignacionRequiredMessage_idasi}"/>
+                        <p:outputLabel value="#{vista.CreateAsignacionLabel_estasi}" for="estasi" />
+                        <p:inputText id="estasi" value="#{asignacionController.selected.estasi}" title="#{vista.CreateAsignacionTitle_estasi}" required="true" requiredMessage="#{vista.CreateAsignacionRequiredMessage_estasi}"/>
+                        <p:outputLabel value="#{vista.CreateAsignacionLabel_gruasig}" for="gruasig" />
+                        <p:inputText id="gruasig" value="#{asignacionController.selected.gruasig}" title="#{vista.CreateAsignacionTitle_gruasig}" required="true" requiredMessage="#{vista.CreateAsignacionRequiredMessage_gruasig}"/>
+                        <p:outputLabel value="#{vista.CreateAsignacionLabel_idper}" for="idper" />
+                        <p:selectOneMenu id="idper" value="#{asignacionController.selected.idper}" required="true" requiredMessage="#{vista.EditAsignacionRequiredMessage_idper}">
+                            <f:selectItems value="#{personaController.itemsAvailableSelectOne}"
+                                           var="idperItem"
+                                           itemValue="#{idperItem}"/>
+                        </p:selectOneMenu>
+                        <p:outputLabel value="#{vista.CreateAsignacionLabel_idven}" for="idven" />
+                        <p:selectOneMenu id="idven" value="#{asignacionController.selected.idven}" required="true" requiredMessage="#{vista.EditAsignacionRequiredMessage_idven}">
+                            <f:selectItems value="#{personaController.itemsAvailableSelectOne}"
+                                           var="idvenItem"
+                                           itemValue="#{idvenItem}"/>
+                        </p:selectOneMenu>
+                        <p:outputLabel value="#{vista.CreateAsignacionLabel_idsuc}" for="idsuc" />
+                        <p:selectOneMenu id="idsuc" value="#{asignacionController.selected.idsuc}" required="true" requiredMessage="#{vista.EditAsignacionRequiredMessage_idsuc}">
+                            <f:selectItems value="#{sucursalController.itemsAvailableSelectOne}"
+                                           var="idsucItem"
+                                           itemValue="#{idsucItem}"/>
+                        </p:selectOneMenu>
+                    </p:panelGrid>
+                    <p:commandButton actionListener="#{asignacionController.create}" value="#{vista.Save}" update="display,:AsignacionListForm:datalist,:growl" oncomplete="handleSubmit(args,'AsignacionCreateDialog');"/>
+                    <p:commandButton value="#{vista.Cancel}" onclick="AsignacionCreateDialog.hide()"/>
+                </h:panelGroup>
+            </h:form>
+        </p:dialog>
+
+    </ui:composition>
+</html>

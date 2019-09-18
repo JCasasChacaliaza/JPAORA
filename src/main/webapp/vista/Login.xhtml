@@ -1,0 +1,26 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:p="http://primefaces.org/ui">
+
+    <h:head>
+        <title>Valle Grande</title>
+
+    </h:head>
+    <h:body>
+        <h:form>
+            <p:growl id="gru" life="1000" />
+                <p:panelGrid id="grid" columns="2">
+                    <p:outputLabel value="Usuario"/>
+                    <p:inputText value="#{loginC.nombreUsuario}" required="true" requiredMessage="Se requiere el usuario"/>
+
+                    <p:outputLabel value="Contraseña"/>
+                    <p:inputText value="#{loginC.contrUsuario}" type="password" required="true" requiredMessage="Se requiere el usuario"/>
+
+                    <p:commandButton action="#{loginC.autenticar()}" value="Iniciar Cuenta" update="gru , grid"  />
+                </p:panelGrid>
+        </h:form>            
+    </h:body>
+</html>
