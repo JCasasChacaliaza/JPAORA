@@ -13,8 +13,7 @@
                 <h:panelGroup id="display">
                     <p:panelGrid columns="2" rendered="#{personaController.selected != null}">
                         
-                        <p:outputLabel value="#{vista.CreatePersonaLabel_idper}" for="idper" />
-                        <p:inputText id="idper" value="#{personaController.selected.idper}" title="#{vista.CreatePersonaTitle_idper}" required="true" requiredMessage="#{vista.CreatePersonaRequiredMessage_idper}"/>
+                        
                         <p:outputLabel value="#{vista.CreatePersonaLabel_nomper}" for="nomper" />
                         <p:inputText id="nomper" value="#{personaController.selected.nomper}" title="#{vista.CreatePersonaTitle_nomper}" required="true" requiredMessage="#{vista.CreatePersonaRequiredMessage_nomper}"/>
                         <p:outputLabel value="#{vista.CreatePersonaLabel_apeper}" for="apeper" />
